@@ -47,7 +47,7 @@ const Layout = () => {
         <main className="flex-1 flex flex-col">
           <header className="h-16 border-b bg-card flex items-center px-4 sticky top-0 z-10">
             <SidebarTrigger />
-            <div className="ml-4 text-lg font-semibold">Vehicle Management System</div>
+            <div className="ml-4 text-lg font-semibold">AutoTrack System</div>
           </header>
           <div className="flex-1 p-6">
             <Outlet />

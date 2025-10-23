@@ -56,7 +56,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className={collapsed ? "text-center" : ""}>
-            {collapsed ? "VM" : "Vehicle Management"}
+            {collapsed ? "AT" : "AutoTrack"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

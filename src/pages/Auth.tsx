@@ -86,7 +86,7 @@ const Auth = () => {
                 <Car className="w-8 h-8 text-primary-foreground" />
               </div>
             </div>
-            <CardTitle className="text-3xl font-bold">Vehicle Management</CardTitle>
+            <CardTitle className="text-3xl font-bold">AutoTrack</CardTitle>
             <CardDescription>Sign in to manage your garage</CardDescription>
           </CardHeader>
           <CardContent>

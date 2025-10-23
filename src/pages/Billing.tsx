@@ -14,6 +14,8 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { format } from "date-fns";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 interface Service {
   service_id: string;
@@ -79,8 +81,48 @@ const Billing = () => {
     window.print();
   };
 
-  const handleDownloadPDF = () => {
-    toast.info("PDF download feature coming soon!");
+  const handleDownloadPDF = async () => {
+    if (!invoiceRef.current || !selectedService) return;
+
+    try {
+      toast.info("Generating PDF...");
+      
+      const canvas = await html2canvas(invoiceRef.current, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+      });
+
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const imgX = (pdfWidth - imgWidth * ratio) / 2;
+      const imgY = 0;
+
+      pdf.addImage(
+        imgData,
+        "PNG",
+        imgX,
+        imgY,
+        imgWidth * ratio,
+        imgHeight * ratio
+      );
+
+      pdf.save(`invoice-${selectedService.service_id.slice(0, 8)}.pdf`);
+      toast.success("PDF downloaded successfully!");
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      toast.error("Failed to generate PDF");
+    }
   };
 
   return (
@@ -152,9 +194,9 @@ const Billing = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-3">From:</h3>
                     <div className="space-y-1 text-sm">
-                      <p className="font-semibold">Your Garage Name</p>
-                      <p>123 Service Street</p>
-                      <p>City, State 12345</p>
+                      <p className="font-semibold">AutoTrack</p>
+                      <p>8, Anna Nagar</p>
+                      <p>Chennai</p>
                       <p>Phone: (555) 123-4567</p>
                     </div>
                   </div>
