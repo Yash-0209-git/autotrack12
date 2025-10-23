@@ -17,7 +17,6 @@ const Auth = () => {
     email: "",
     password: "",
     username: "",
-    role: "staff" as "admin" | "staff",
   });
   const [loginData, setLoginData] = useState({
     email: "",
@@ -35,7 +34,6 @@ const Auth = () => {
         options: {
           data: {
             username: signupData.username,
-            role: signupData.role,
           },
           emailRedirectTo: `${window.location.origin}/`,
         },
@@ -162,20 +160,6 @@ const Auth = () => {
                       onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
                       required
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-role">Role</Label>
-                    <select
-                      id="signup-role"
-                      value={signupData.role}
-                      onChange={(e) =>
-                        setSignupData({ ...signupData, role: e.target.value as "admin" | "staff" })
-                      }
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
-                    >
-                      <option value="staff">Staff</option>
-                      <option value="admin">Admin</option>
-                    </select>
                   </div>
                   <Button type="submit" className="w-full" disabled={loading}>
                     {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Create Account"}
