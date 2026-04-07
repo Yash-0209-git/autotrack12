@@ -266,7 +266,7 @@ const Services = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right">
-                    <p className="text-2xl font-bold">${Number(service.cost).toFixed(2)}</p>
+                    <p className="text-2xl font-bold">₹{Number(service.cost).toFixed(2)}</p>
                   </div>
                   <div className="flex gap-2">
                     <Button
