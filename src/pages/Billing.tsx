@@ -153,7 +153,7 @@ const Billing = () => {
               {services.map((service) => (
                 <SelectItem key={service.service_id} value={service.service_id}>
                   {format(new Date(service.service_date), "MMM dd, yyyy")} -{" "}
-                  {service.vehicles.reg_no} - ${Number(service.cost).toFixed(2)}
+                  {service.vehicles.reg_no} - ₹{Number(service.cost).toFixed(2)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -256,7 +256,7 @@ const Billing = () => {
                             )}
                           </td>
                           <td className="p-4 text-right font-semibold">
-                            ${Number(selectedService.cost).toFixed(2)}
+                            ₹{Number(selectedService.cost).toFixed(2)}
                           </td>
                         </tr>
                       </tbody>
@@ -264,7 +264,7 @@ const Billing = () => {
                         <tr>
                           <td className="p-4 text-right font-semibold">Total Amount</td>
                           <td className="p-4 text-right font-bold text-xl">
-                            ${Number(selectedService.cost).toFixed(2)}
+                            ₹{Number(selectedService.cost).toFixed(2)}
                           </td>
                         </tr>
                       </tfoot>

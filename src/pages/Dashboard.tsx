@@ -122,7 +122,7 @@ const Dashboard = () => {
     },
     {
       title: "Total Revenue",
-      value: `$${stats.totalRevenue.toFixed(2)}`,
+      value: `₹${stats.totalRevenue.toFixed(2)}`,
       icon: DollarSign,
       color: "text-success",
       bgColor: "bg-success/10",
@@ -203,7 +203,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="text-right space-y-2">
-                    <div className="font-semibold text-lg">${Number(service.cost).toFixed(2)}</div>
+                    <div className="font-semibold text-lg">₹{Number(service.cost).toFixed(2)}</div>
                     <Badge className={getStatusBadge(service.status)}>
                       {service.status.replace("_", " ")}
                     </Badge>
